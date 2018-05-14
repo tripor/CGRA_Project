@@ -18,14 +18,7 @@ class SemiCircleCut extends CGFobject
 	initBuffers() 
 	{
 
-		this.normals = [
-			0 , 0 , 1,
-			0 , 0 , 1,
-			0 , 0 , 1,
-			0 , 0 , 1
-	
-	
-			]
+		this.normals = [];
 	
 			this.texCoords = [
 			0 , 1 ,
@@ -47,6 +40,7 @@ class SemiCircleCut extends CGFobject
 				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),Math.sin(i*this.angle)*this.wheelDiam,0,
 				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),this.height,0
 			);
+			this.normals.push(0,0,1,0,0,1);
 		}
         
     if(this.direction==0){
