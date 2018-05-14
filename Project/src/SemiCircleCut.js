@@ -1,5 +1,5 @@
 /**
- * SemiCircleCut
+ * SemiCircleCutPush
  * @constructor
  */
 class SemiCircleCut extends CGFobject

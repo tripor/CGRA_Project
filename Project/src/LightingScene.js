@@ -19,7 +19,7 @@ class LightingScene extends CGFscene
 
 		this.initLights();
 
-		this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+		this.gl.clearColor(0.5, 0.5, 0.9, 1.0);
 		this.gl.clearDepth(100.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
 		this.gl.enable(this.gl.CULL_FACE);
@@ -28,9 +28,8 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 
 		//-----------------------------------Scene elements------------------------------------------
-		this.wall = new Plane(this,10);
-		this.floor = new Plane(this,10);
 		this.car = new Car(this);
+		this.terrain =  new MyTerrain(this,50,50);
 		
 		//this.boardA = new Plane(this, BOARD_A_DIVISIONS);
 		//this.boardB = new Plane(this, BOARD_B_DIVISIONS);
@@ -74,7 +73,7 @@ class LightingScene extends CGFscene
 
 	initLights() 
 	{
-		this.setGlobalAmbientLight(0.5,0.5,0.5, 1.0);
+		this.setGlobalAmbientLight(1,1,1, 1.0);
 
 		this.lights[0].setPosition(10.5, 6.0, 5.0, 1.0);
 		this.lights[0].setVisible(true); // show marker on light position (different from enabled)
@@ -126,36 +125,15 @@ class LightingScene extends CGFscene
 			
 		this.popMatrix();
 		*/
-		//---------------Floor-------------------
-		this.pushMatrix();
-			this.translate(7.5, 0, 7.5);
-			this.rotate(-90 * degToRad, 1, 0, 0);
-			this.scale(15, 15, 0.2);
-			this.materialDefault.apply();
-			this.floor.display();
-		this.popMatrix();
-
-		//---------------Left Wall---------------
-		this.pushMatrix();
-			this.translate(0, 4, 7.5);
-			this.rotate(90 * degToRad, 0, 1, 0);
-			this.scale(15, 8, 0.2);
-			this.materialDefault.apply();
-			this.wall.display();
-		this.popMatrix();
-
-		//---------------Right Wall-------------
-		this.pushMatrix();
-			this.translate(7.5, 4, 0);
-			this.scale(15, 8, 0.2);
-			this.materialDefault.apply();
-			this.wall.display();
-		this.popMatrix();
 
 		//---------------Car-------------------
 		this.pushMatrix();
 			this.translate(2, 0, 2);
 			this.car.display();
+		this.popMatrix();
+
+		this.pushMatrix();
+			this.terrain.display();
 		this.popMatrix();
 
 		//----------------------------END Scene drawing section----------------------------------
