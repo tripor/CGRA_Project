@@ -52,12 +52,7 @@ class MyTrapeze extends CGFobject
 
 
 		]
-		/*this.vertices = [
-		0, 0, 0,
-		this.base, 0, 0,
-		this.dif, this.height, 0,
-		this.dif + this.top, this.height, 0
-        ];*/
+		
         
         this.vertices = [
 		0, 0, 0,
