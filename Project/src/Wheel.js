@@ -17,8 +17,14 @@ class Wheel extends CGFobject
         this.tire_image.loadTexture("../resources/images/tire.png");
 		this.tire_image.setAmbient(0.25,0.25,0.25,1);
 		this.tire_image.setDiffuse(0.1,0.1,0.1,1);
-		this.tire_image.setSpecular(0.1,0.1,0.1,1);	
+		this.tire_image.setSpecular(0,0,0,1);	
 		this.tire_image.setShininess(100);
+
+		this.black = new CGFappearance(this.scene);
+		this.black.setAmbient(0,0,0,1);
+		this.black.setDiffuse(0,0,0,1);
+		this.black.setSpecular(0,0,0,1);	
+		this.black.setShininess(100);
 
 		this.initBuffers();
 	};
@@ -32,6 +38,12 @@ class Wheel extends CGFobject
         this.scene.pushMatrix();
             this.tire_image.apply();
             this.cilindro.display();
+		this.scene.popMatrix();
+		this.scene.pushMatrix();
+			this.scene.translate(0,0,1);
+			this.scene.rotate(180*degToRad,1,0,0);
+			this.black.apply();
+            super.display();
 		this.scene.popMatrix();
     }
 
