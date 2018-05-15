@@ -26,7 +26,12 @@ class LightingScene extends CGFscene
 		this.gl.depthFunc(this.gl.LEQUAL);
 
 		this.axis = new CGFaxis(this);
-
+		//-----------------------------------Values--------------------------------------------------
+		this.velocidade=0;
+		this.pos_x=2;
+		this.pos_y=0;
+		this.direcao=0;
+		this.turn=0;
 		//-----------------------------------Interface-----------------------------------------------
 
 		this.speed=5;
@@ -37,9 +42,7 @@ class LightingScene extends CGFscene
 		//-----------------------------------Scene elements------------------------------------------
 		this.car = new Car(this);
 		this.terrain =  new MyTerrain(this,50,50);
-		
-		//this.boardA = new Plane(this, BOARD_A_DIVISIONS);
-		//this.boardB = new Plane(this, BOARD_B_DIVISIONS);
+
 		//-----------------------------------End Scene elements--------------------------------------
 		//-----------------------------------Materials-----------------------------------------------
 		this.materialDefault = new CGFappearance(this);
@@ -149,7 +152,8 @@ class LightingScene extends CGFscene
 
 		//---------------Car-------------------
 		this.pushMatrix();
-			this.translate(2, 0, 2);
+			this.translate(this.pos_x, 0, this.pos_y);
+			this.rotate(-this.turn*degToRad,0,1,0);
 			this.car.display();
 		this.popMatrix();
 
@@ -161,16 +165,57 @@ class LightingScene extends CGFscene
 
 
 	};
+	checkKeys()
+	{
+		if (this.gui.isKeyPressed("KeyW"))
+		{
+			this.velocidade+=0.1;
+			if(this.velocidade>10)
+				this.velocidade=10;
+		}
+		if (this.gui.isKeyPressed("KeyS"))
+		{
+			this.velocidade-=0.1;
+			if(this.velocidade<-5)
+				this.velocidade=-5;
+		}
+		if (this.gui.isKeyPressed("KeyA"))
+		{
+			this.direcao-=2;
+			if(this.direcao<-50)
+				this.direcao=-50;
+		}
+		if (this.gui.isKeyPressed("KeyD"))
+		{
+			this.direcao+=2;
+			if(this.direcao>50)
+				this.direcao=50;
+		}
+	};
+
 
 	update(currTime)
 	{
-		this.lasttime=this.lasttime || 0;
+		this.lasttime=this.lasttime || currTime;
 		this.deltatime =currTime - this.lasttime;
 		this.lasttime=currTime;
-		// primeiro valor é enorme
-	}
-	
-    doSomething(){ 
-        console.log("Doing something..."); 
-    };
+		this.turn+=this.direcao*(this.velocidade/4)*(this.deltatime/1000);
+		if(this.direcao!=0)
+		{
+			if(this.direcao<0)
+			{
+				this.direcao+=3*(Math.abs(this.velocidade))*(this.deltatime/1000)
+				if(this.direcao>0) this.direcao=0;
+			}
+			else
+			{
+				this.direcao-=3*(Math.abs(this.velocidade))*(this.deltatime/1000)
+				if(this.direcao<0)this.direcao=0;
+			}
+		}
+		this.pos_x+=this.velocidade*this.deltatime/1000 * Math.cos(this.turn*degToRad);
+		this.pos_y+=this.velocidade*this.deltatime/1000 * Math.sin(this.turn*degToRad);
+		this.car.update(this.direcao);
+		this.checkKeys();
+	};
 };

@@ -31,7 +31,8 @@ class Wheel extends CGFobject
 
     display()
     {
-        this.scene.pushMatrix();
+		this.scene.translate(0,0,-0.25);
+		this.scene.pushMatrix();
             this.wheel_rim_image.apply();
             super.display();
 		this.scene.popMatrix();

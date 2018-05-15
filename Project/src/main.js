@@ -19,7 +19,6 @@ serialInclude([
 	'MyTriangle.js',
 	'SemiCircleCut.js',
 	'CarCover.js',
-	'CarFront.js',
 	'MyCustomTriangle.js',
 	'MyTerrain.js',
 	'CarBottom.js',
