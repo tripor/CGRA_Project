@@ -27,6 +27,13 @@ class LightingScene extends CGFscene
 
 		this.axis = new CGFaxis(this);
 
+		//-----------------------------------Interface-----------------------------------------------
+
+		this.speed=5;
+		this.Light_1=true;
+		this.Light_2=true;
+		this.Eixos=true;
+
 		//-----------------------------------Scene elements------------------------------------------
 		this.car = new Car(this);
 		this.terrain =  new MyTerrain(this,50,50);
@@ -73,24 +80,38 @@ class LightingScene extends CGFscene
 
 	initLights() 
 	{
-		this.setGlobalAmbientLight(1,1,1, 1.0);
+		this.setGlobalAmbientLight(0.7,0.7,0.7, 1.0);
 
 		this.lights[0].setPosition(10.5, 6.0, 5.0, 1.0);
 		this.lights[0].setVisible(true); // show marker on light position (different from enabled)
 
-		this.lights[0].setAmbient(0, 0, 0, 1);
-		this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
-		this.lights[0].setSpecular(1, 1, 1, 1);
-		//this.lights[0].setConstantAttenuation(0);
-		//this.lights[0].setLinearAttenuation(0);
-		//this.lights[0].setQuadraticAttenuation(0);
+		this.lights[0].setAmbient(0.1, 0.1, 0.1, 1);
+		this.lights[0].setDiffuse(0.5, 0.5, 0.5, 1.0);
+		this.lights[0].setSpecular(0.5, 0.5, 0.5, 1);
 		this.lights[0].enable();
+
+		this.lights[1].setPosition(30, 6.0, 30, 1.0);
+		this.lights[1].setVisible(true); // show marker on light position (different from enabled)
+
+		this.lights[1].setAmbient(0.1, 0.1, 0.1, 1);
+		this.lights[1].setDiffuse(1, 0, 0, 1.0);
+		this.lights[1].setSpecular(0.5, 0.5, 0.5, 1);
+		this.lights[1].enable();
 	};
 
 	updateLights() 
 	{
 		for (var i = 0; i < this.lights.length; i++)
 			this.lights[i].update();
+
+		if(this.Light_1)
+			this.lights[0].enable();
+		else 
+			this.lights[0].disable();
+		if(this.Light_2)
+			this.lights[1].enable();
+		else 
+			this.lights[1].disable();
 	}
 
 
@@ -113,9 +134,9 @@ class LightingScene extends CGFscene
 		this.updateLights();
 
 		// Draw axis
-		this.axis.display();
+		if(this.Eixos==true)
+			this.axis.display();
 
-		//this.materialDefault.apply();
 
 		// ---- END Background, camera and axis setup
 
@@ -137,6 +158,8 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 
 		//----------------------------END Scene drawing section----------------------------------
+
+
 	};
 
 	update(currTime)
@@ -146,4 +169,8 @@ class LightingScene extends CGFscene
 		this.lasttime=currTime;
 		// primeiro valor é enorme
 	}
+	
+    doSomething(){ 
+        console.log("Doing something..."); 
+    };
 };
