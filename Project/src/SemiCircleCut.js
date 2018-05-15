@@ -20,13 +20,13 @@ class SemiCircleCut extends CGFobject
 
 		this.normals = [];
 	
-			this.texCoords = [
+			/*this.texCoords = [
 			0 , 1 ,
 			1 , 1 ,
 			0 , 0 ,
 			1 , 0
-			]
-
+			]*/
+		this.texCoords=[];
 		this.vertices=[];
 		this.indices=[];
 		
@@ -39,6 +39,10 @@ class SemiCircleCut extends CGFobject
 			this.vertices.push(
 				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),Math.sin(i*this.angle)*this.wheelDiam,0,
 				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),this.height,0
+			);
+			this.texCoords.push(
+				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),Math.sin(i*this.angle)*this.wheelDiam,
+				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),this.height
 			);
 			this.normals.push(0,0,1,0,0,1);
 		}
