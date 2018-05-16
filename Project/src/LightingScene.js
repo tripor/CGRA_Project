@@ -32,6 +32,9 @@ class LightingScene extends CGFscene
 		this.pos_y=0;
 		this.direcao=0;
 		this.turn=0;
+		this.Estabilizacao=5;
+		this.isTurning=false;
+		this.wheel_rad=0;
 		//-----------------------------------Interface-----------------------------------------------
 
 		this.speed=5;
@@ -184,13 +187,19 @@ class LightingScene extends CGFscene
 			this.direcao-=2;
 			if(this.direcao<-50)
 				this.direcao=-50;
+			this.isTurning=true;
 		}
+		else
+			this.isTurning=false;
 		if (this.gui.isKeyPressed("KeyD"))
 		{
 			this.direcao+=2;
 			if(this.direcao>50)
 				this.direcao=50;
+			this.isTurning=true;
 		}
+		else
+			this.isTurning=this.isTurning || false;
 	};
 
 
@@ -200,22 +209,22 @@ class LightingScene extends CGFscene
 		this.deltatime =currTime - this.lasttime;
 		this.lasttime=currTime;
 		this.turn+=this.direcao*(this.velocidade/4)*(this.deltatime/1000);
-		if(this.direcao!=0)
+		if(this.direcao!=0 && this.isTurning==false)
 		{
 			if(this.direcao<0)
 			{
-				this.direcao+=3*(Math.abs(this.velocidade))*(this.deltatime/1000)
+				this.direcao+=this.Estabilizacao*(Math.abs(this.velocidade))*(this.deltatime/1000)
 				if(this.direcao>0) this.direcao=0;
 			}
 			else
 			{
-				this.direcao-=3*(Math.abs(this.velocidade))*(this.deltatime/1000)
+				this.direcao-=this.Estabilizacao*(Math.abs(this.velocidade))*(this.deltatime/1000)
 				if(this.direcao<0)this.direcao=0;
 			}
 		}
 		this.pos_x+=this.velocidade*this.deltatime/1000 * Math.cos(this.turn*degToRad);
 		this.pos_y+=this.velocidade*this.deltatime/1000 * Math.sin(this.turn*degToRad);
-		this.car.update(this.direcao);
+		this.car.update(this.direcao,this.velocidade);
 		this.checkKeys();
 	};
 };

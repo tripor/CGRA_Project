@@ -26,8 +26,8 @@ class MyInterface extends CGFinterface {
         group.add(this.scene, 'Light_2');
         
         this.gui.add(this.scene, "Eixos");
-
-		//this.gui.add(this.scene, 'speed', -5, 5);
+		this.gui.add(this.scene, 'velocidade', -5, 10).listen();
+		this.gui.add(this.scene, 'Estabilizacao', 0, 10);
         this.initKeys();
 		return true;
 	};

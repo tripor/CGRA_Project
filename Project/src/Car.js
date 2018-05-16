@@ -14,6 +14,7 @@ class Car extends CGFobject
         this.carMiddleFront = new CarTop(this.scene,0.5,4,3,2);
         
         this.turning=0;
+        this.wheel_rad=0;
         this.back=0.5;
         this.middle=2.7;
         this.wheelRadius=0.4;  
@@ -42,6 +43,7 @@ class Car extends CGFobject
             this.scene.scale(this.wheelRadius,this.wheelRadius,this.wheelRadius);
             this.scene.translate(0,0,1);
             this.scene.rotate((180+this.turning)*degToRad,0,1,0);
+            this.scene.rotate(this.wheel_rad*degToRad,0,0,1);
             this.wheel1.display();
         this.scene.popMatrix();
         //---------------Wheel 2----------------
@@ -49,6 +51,7 @@ class Car extends CGFobject
             this.scene.translate(4,this.wheelRadius,2);
             this.scene.scale(this.wheelRadius,this.wheelRadius,this.wheelRadius);
             this.scene.rotate((this.turning)*degToRad,0,1,0);
+            this.scene.rotate(-this.wheel_rad*degToRad,0,0,1);
             this.wheel2.display();
         this.scene.popMatrix();
         //---------------Wheel 3----------------
@@ -57,12 +60,14 @@ class Car extends CGFobject
             this.scene.scale(this.wheelRadius,this.wheelRadius,this.wheelRadius);
             this.scene.translate(0,0,1);
             this.scene.rotate(180*degToRad,0,1,0);
+            this.scene.rotate(this.wheel_rad*degToRad,0,0,1);
             this.wheel3.display();
         this.scene.popMatrix();
         //---------------Wheel 4----------------
         this.scene.pushMatrix();
             this.scene.translate(0.5,this.wheelRadius,2);
             this.scene.scale(this.wheelRadius,this.wheelRadius,this.wheelRadius);
+            this.scene.rotate(-this.wheel_rad*degToRad,0,0,1);
             this.wheel4.display();
         this.scene.popMatrix();
         
@@ -122,8 +127,9 @@ class Car extends CGFobject
 		this.initGLBuffers();
     };
     
-    update(direcao)
+    update(direcao,velocidade)
 	{
         this.turning=-direcao;
+        this.wheel_rad+=(this.wheelRadius*velocidade)/(this.wheelRadius*this.wheelRadius);
 	}
 };
