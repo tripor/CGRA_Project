@@ -13,7 +13,8 @@ class Wheel extends CGFobject
     {
 		this.scene.translate(0,0,-0.25);
 		this.scene.pushMatrix();
-		this.scene.vehicleAppearances[this.scene.currVehicleAppearance].wheel_rim_image.apply();
+			//console.log(this.scene.currVehicleAppearance);
+			this.scene.vehicleAppearances[this.scene.currVehicleAppearance].wheel_rim_image.apply();
             super.display();
 		this.scene.popMatrix();
         this.scene.pushMatrix();

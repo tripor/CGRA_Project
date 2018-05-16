@@ -28,7 +28,7 @@ class LightingScene extends CGFscene
 
 		this.axis = new CGFaxis(this);
 		//-----------------------------------Values--------------------------------------------------
-		this.velocidade=0;
+		this.velocidade=0.0;
 		this.pos_x=2;
 		this.pos_y=0;
 		this.direcao=0;
@@ -36,6 +36,10 @@ class LightingScene extends CGFscene
 		this.Estabilizacao=5;
 		this.isTurning=false;
 		this.wheel_rad=0;
+		this.Inercia_Cancelation=false;
+		this.Atrito=false;
+		this.atrito_valor=0.1;
+		this.Turning_hack=false;
 		//-----------------------------------Interface-----------------------------------------------
 
 		this.speed=5;
@@ -49,11 +53,14 @@ class LightingScene extends CGFscene
 		this.vehicleAppearances=[];
 
 		this.vehicleAppearances.push(new Texture(this,"images"));
+		this.vehicleAppearances.push(new Texture(this,"images2"));
 
-		this.Appearance=[];
-		this.Appearance.push("Basic");
+		this.VehicleAppearanceList=[];
+		this.VehicleAppearanceList.push('Basic');
+		this.VehicleAppearanceList.push('Flames');
 
-		this.currVehicleAppearance=this.Appearance.indexOf("Basic");
+		this.Appearance='Basic';
+		this.currVehicleAppearance=0;
 
 		//----------------------------------End Materials------------------------------------------
 		//-----------------------------------Scene elements------------------------------------------
@@ -108,6 +115,7 @@ class LightingScene extends CGFscene
 
 	display() 
 	{
+		this.currVehicleAppearance=this.VehicleAppearanceList.indexOf(this.Appearance);
 		// ---- BEGIN Background, camera and axis setup
 
 		// Clear image and depth buffer everytime we update the scene
@@ -161,16 +169,24 @@ class LightingScene extends CGFscene
 			if(this.velocidade>10)
 				this.velocidade=10;
 		}
+		else if(this.Inercia_Cancelation==true && this.velocidade>0)
+		{
+			this.velocidade=0;
+		}
 		if (this.gui.isKeyPressed("KeyS"))
 		{
 			this.velocidade-=0.1;
 			if(this.velocidade<-5)
 				this.velocidade=-5;
 		}
+		else if(this.Inercia_Cancelation==true && this.velocidade<0)
+		{
+			this.velocidade=0;
+		}
 		if (this.gui.isKeyPressed("KeyA"))
 		{
 			this.direcao-=2;
-			if(this.direcao<-50)
+			if(this.direcao<-50 || this.Turning_hack==true)
 				this.direcao=-50;
 			this.isTurning=true;
 		}
@@ -179,7 +195,7 @@ class LightingScene extends CGFscene
 		if (this.gui.isKeyPressed("KeyD"))
 		{
 			this.direcao+=2;
-			if(this.direcao>50)
+			if(this.direcao>50 || this.Turning_hack==true)
 				this.direcao=50;
 			this.isTurning=true;
 		}
@@ -209,6 +225,20 @@ class LightingScene extends CGFscene
 		}
 		this.pos_x+=this.velocidade*this.deltatime/1000 * Math.cos(this.turn*degToRad);
 		this.pos_y+=this.velocidade*this.deltatime/1000 * Math.sin(this.turn*degToRad);
+		if(this.Atrito==true && this.velocidade!=0)
+		{
+			if(this.velocidade<0)
+			{
+				this.velocidade+=this.atrito_valor*this.deltatime/1000;
+				if(this.velocidade>0)this.velocidade=0;
+
+			}
+			else
+			{
+				this.velocidade-=this.atrito_valor*this.deltatime/1000;
+				if(this.velocidade<0)this.velocidade=0;
+			}
+		}
 		this.car.update(this.direcao,this.velocidade);
 		this.checkKeys();
 	};
