@@ -2,6 +2,7 @@ var degToRad = Math.PI / 180.0;
 
 var FPS=60;
 
+
 class LightingScene extends CGFscene 
 {
 	constructor()
@@ -42,40 +43,24 @@ class LightingScene extends CGFscene
 		this.Light_2=true;
 		this.Eixos=true;
 
+		//-----------------------------------Materials-----------------------------------------------
+		this.materialDefault = new CGFappearance(this);
+		
+		this.vehicleAppearances=[];
+
+		this.vehicleAppearances.push(new Texture(this,"images"));
+
+		this.Appearance=[];
+		this.Appearance.push("Basic");
+
+		this.currVehicleAppearance=this.Appearance.indexOf("Basic");
+
+		//----------------------------------End Materials------------------------------------------
 		//-----------------------------------Scene elements------------------------------------------
 		this.car = new Car(this);
 		this.terrain =  new MyTerrain(this,50,50);
 
 		//-----------------------------------End Scene elements--------------------------------------
-		//-----------------------------------Materials-----------------------------------------------
-		this.materialDefault = new CGFappearance(this);
-		
-		/*this.materialA = new CGFappearance(this);
-		this.materialA.setAmbient(0.3,0.3,0.3,1);
-		this.materialA.setDiffuse(0.6,0.6,0.6,1);
-		this.materialA.setSpecular(0,0.2,0.8,1);//RGB 0..1 X 0..255
-		this.materialA.setShininess(120);
-
-		this.materialB = new CGFappearance(this);
-		this.materialB.setAmbient(0.3,0.3,0.3,1);
-		this.materialB.setDiffuse(0.6,0.6,0.6,1);
-		this.materialB.setSpecular(0.8,0.8,0.8,1);	
-		this.materialB.setShininess(120);
-		
-		this.materialChao = new CGFappearance(this);
-		this.materialChao.setAmbient(0.5,0.5,0.5,1);
-		this.materialChao.setDiffuse(0.3,0.3,0.3,1);
-		this.materialChao.setSpecular(0.1,0.1,0.1,1);	
-		this.materialChao.setShininess(100);
-		
-		this.materialParede = new CGFappearance(this);
-		this.materialParede.loadTexture("../resources/images/table.png");
-		this.materialParede.setAmbient(0.5,0.5,0.5,1);
-		this.materialParede.setDiffuse(0.6,0.6,0.6,1);
-		this.materialParede.setSpecular(0.1,0.1,0.1,1);	
-		this.materialParede.setShininess(100);*/
-		//----------------------------------End Materials------------------------------------------
-		
 		this.setUpdatePeriod(1000/FPS);
 	};
 

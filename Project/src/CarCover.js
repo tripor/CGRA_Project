@@ -25,27 +25,7 @@ class CarCover extends CGFobject
 
         this.tria=new MyCustomTriangle(this.scene,(this.leastHeight-0.4)/2,this.height-this.leastHeight+(this.leastHeight-0.4)/2,this.front+this.wheelDiam,1);
         this.tria2=new MyCustomTriangle(this.scene,(this.leastHeight-0.4)/2,this.height-this.leastHeight+(this.leastHeight-0.4)/2,this.front+this.wheelDiam,0);
-
-        this.lights = new CGFappearance(this.scene);
-        this.lights.loadTexture("../resources/images/light.png");
-		this.lights.setAmbient(0.5,0.5,0.5,1);
-		this.lights.setDiffuse(0.2,0.2,0.2,1);
-		this.lights.setSpecular(0.1,0.1,0.1,1);	
-        this.lights.setShininess(100);
-
-        this.connection = new CGFappearance(this.scene);
-        this.connection.loadTexture("../resources/images/connection.png");
-		this.connection.setAmbient(0.5,0.5,0.5,1);
-		this.connection.setDiffuse(0.2,0.2,0.2,1);
-		this.connection.setSpecular(0.1,0.1,0.1,1);	
-        this.connection.setShininess(100);
-
-        this.gray = new CGFappearance(this.scene);
-        this.gray.loadTexture("../resources/images/top.png");
-		this.gray.setAmbient(0.5,0.5,0.5,1);
-		this.gray.setDiffuse(0.2,0.2,0.2,1);
-		this.gray.setSpecular(0.1,0.1,0.1,1);	
-        this.gray.setShininess(100);
+        
 						
 	};
 
@@ -71,7 +51,7 @@ class CarCover extends CGFobject
             this.scene.translate(4.6,1,2.05);
             this.scene.rotate(90*degToRad,0,1,0);
             this.scene.scale(this.leastHeight-0.4,this.leastHeight-0.4,1);
-            this.lights.apply();
+            this.scene.vehicleAppearances[this.scene.currVehicleAppearance].lights.apply();
             this.quad.display();
         this.scene.popMatrix();
 
@@ -87,7 +67,7 @@ class CarCover extends CGFobject
             this.scene.translate(4.6,0.925,1.2);
             this.scene.rotate(90*degToRad,0,1,0);
             this.scene.scale(2-(this.leastHeight-0.4)*2,(this.leastHeight-0.4)/2,1);
-            this.connection.apply();
+            this.scene.vehicleAppearances[this.scene.currVehicleAppearance].connection.apply();
             this.quad.display();
         this.scene.popMatrix();
 
@@ -96,7 +76,7 @@ class CarCover extends CGFobject
             this.scene.rotate(-90*degToRad,1,0,0);
             this.scene.rotate(this.rot,0,1,0);
             this.scene.scale(this.squarLength,this.leastHeight-0.4,1);
-            this.gray.apply();
+            this.scene.vehicleAppearances[this.scene.currVehicleAppearance].gray.apply();
             this.quad.display();
         this.scene.popMatrix();
 

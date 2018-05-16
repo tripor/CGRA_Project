@@ -6,26 +6,6 @@ class Wheel extends CGFobject
         this.slices = 40;
         this.cilindro= new MyCylinder(this.scene,this.slices,3);
 
-        this.wheel_rim_image = new CGFappearance(this.scene);
-        this.wheel_rim_image.loadTexture("../resources/images/wheel_rim.png");
-		this.wheel_rim_image.setAmbient(0.5,0.5,0.5,1);
-		this.wheel_rim_image.setDiffuse(0.2,0.2,0.2,1);
-		this.wheel_rim_image.setSpecular(0.1,0.1,0.1,1);	
-        this.wheel_rim_image.setShininess(100);
-        
-        this.tire_image = new CGFappearance(this.scene);
-        this.tire_image.loadTexture("../resources/images/tire.png");
-		this.tire_image.setAmbient(0.25,0.25,0.25,1);
-		this.tire_image.setDiffuse(0.1,0.1,0.1,1);
-		this.tire_image.setSpecular(0,0,0,1);	
-		this.tire_image.setShininess(100);
-
-		this.black = new CGFappearance(this.scene);
-		this.black.setAmbient(0,0,0,1);
-		this.black.setDiffuse(0,0,0,1);
-		this.black.setSpecular(0,0,0,1);	
-		this.black.setShininess(100);
-
 		this.initBuffers();
 	};
 
@@ -33,17 +13,17 @@ class Wheel extends CGFobject
     {
 		this.scene.translate(0,0,-0.25);
 		this.scene.pushMatrix();
-            this.wheel_rim_image.apply();
+		this.scene.vehicleAppearances[this.scene.currVehicleAppearance].wheel_rim_image.apply();
             super.display();
 		this.scene.popMatrix();
         this.scene.pushMatrix();
-            this.tire_image.apply();
+		this.scene.vehicleAppearances[this.scene.currVehicleAppearance].tire_image.apply();
             this.cilindro.display();
 		this.scene.popMatrix();
 		this.scene.pushMatrix();
 			this.scene.translate(0,0,1);
 			this.scene.rotate(180*degToRad,1,0,0);
-			this.black.apply();
+			this.scene.vehicleAppearances[this.scene.currVehicleAppearance].black.apply();
             super.display();
 		this.scene.popMatrix();
     }
