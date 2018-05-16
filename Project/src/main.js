@@ -24,6 +24,8 @@ serialInclude([
 	'CarBottom.js',
 	'MyInterface.js',
 	'Texture.js',
+	'CarUnder.js',
+	'SemiCylinder.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

@@ -14,15 +14,24 @@ class MyTriangle extends CGFobject
 
 	initBuffers() 
 	{
+		if(this.direction==1){
 		this.normals = [
-		0 , 0 , 1,
-		0 , 0 , 1,
-        0 , 0 , 1,
-        0,0,1
+		0 , 0 , -1,
+		0 , 0 , -1,
+        0 , 0 , -1,
+        0 , 0 , -1
 		
-
-
 		]
+	}
+		else{
+			this.normals = [
+				0 , 0 , 1,
+				0 , 0 , 1,
+				0 , 0 , 1,
+				0 , 0 ,1
+				
+				]
+		}
 
 		this.texCoords = [
 		0 , 1 ,

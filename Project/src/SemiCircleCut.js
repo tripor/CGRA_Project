@@ -44,7 +44,12 @@ class SemiCircleCut extends CGFobject
 				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),Math.sin(i*this.angle)*this.wheelDiam,
 				(this.wheelDiam)-(Math.cos(i*this.angle)*(this.wheelDiam)),this.height
 			);
-			this.normals.push(0,0,1,0,0,1);
+			if(this.direction==1){
+				this.normals.push(0,0,-1,0,0,-1);
+			}
+			else {
+				this.normals.push(0,0,1,0,0,1);
+			}
 		}
         
     if(this.direction==0){

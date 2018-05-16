@@ -54,10 +54,12 @@ class LightingScene extends CGFscene
 
 		this.vehicleAppearances.push(new Texture(this,"images"));
 		this.vehicleAppearances.push(new Texture(this,"images2"));
+		this.vehicleAppearances.push(new Texture(this,"images3"));
 
 		this.VehicleAppearanceList=[];
 		this.VehicleAppearanceList.push('Basic');
 		this.VehicleAppearanceList.push('Flames');
+		this.VehicleAppearanceList.push('Jungle');
 
 		this.Appearance='Basic';
 		this.currVehicleAppearance=0;

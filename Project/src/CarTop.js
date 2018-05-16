@@ -39,7 +39,7 @@ class CarTop extends CGFobject
             this.scene.rotate(-90 * degToRad, 1, 0, 0);
             if(this.type==1) this.scene.vehicleAppearances[this.scene.currVehicleAppearance].topTexture.apply();
             else if(this.type==2) this.scene.vehicleAppearances[this.scene.currVehicleAppearance].carFront.apply();
-            else this.scene.vehicleAppearances[this.scene.currVehicleAppearance].topTexture.apply();
+            else this.scene.vehicleAppearances[this.scene.currVehicleAppearance].snake.apply();
 		    this.quad.display();
         this.scene.popMatrix();
         
