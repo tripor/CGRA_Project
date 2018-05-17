@@ -1,9 +1,10 @@
 class MyTerrain extends CGFobject
 {
-	constructor(scene,divisions,size) 
+	constructor(scene,divisions,altimetry) 
 	{
 		super(scene);
-        this.plano=new Plane(scene,divisions,50);
+		this.plano=new Plane(scene,divisions,50);
+		this.altimetry=altimetry;
 
         this.material_ground = new CGFappearance(this.scene);
 		this.material_ground.loadTexture("../resources/geral/terrain.png");
