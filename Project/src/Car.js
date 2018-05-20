@@ -30,9 +30,7 @@ class Car extends CGFobject
         this.side2 = new CarSide(this.scene,16,this.back,this.middle,this.front,this.leastHeight,this.height,this.wheelRadius,1);
 
         this.cover = new CarCover(this.scene,this.flatLength,this.height,this.leastHeight,this.back,this.front,this.wheelRadius);
-   
-        this.bottom= new CarBottom(this.scene);
-
+           
         this.under=new CarUnder(this.scene,this.back,this.middle,this.front,this.wheelRadius,this.curve);
 
 		this.initBuffers();
@@ -110,13 +108,6 @@ class Car extends CGFobject
             this.scene.rotate(-90*degToRad,0,0,1);
             this.scene.scale(0.1,0.2,0.5);
             this.carMiddleFront.display();
-        this.scene.popMatrix();
-        //--------------Bottom-------------------
-        this.scene.pushMatrix();
-            this.scene.translate(1,1,1);
-            this.scene.rotate(90*degToRad,1,0,0);
-            //this.scene.scale(0.1,0.2,0.5);
-            this.bottom.display();
         this.scene.popMatrix();
         //--------------Under--------------------
         this.scene.pushMatrix();

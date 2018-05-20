@@ -21,11 +21,11 @@ serialInclude([
 	'CarCover.js',
 	'MyCustomTriangle.js',
 	'MyTerrain.js',
-	'CarBottom.js',
 	'MyInterface.js',
 	'Texture.js',
 	'CarUnder.js',
 	'SemiCylinder.js',
+	'MyCrane.js',
 
 	main=function() {
 		var app = new CGFapplication(document.body);

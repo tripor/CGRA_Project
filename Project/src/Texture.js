@@ -88,13 +88,6 @@ class Texture extends CGFobject
 		this.darkGray.setSpecular(0.1,0.1,0.1,1);	
         this.darkGray.setShininess(100);
 
-        this.feup = new CGFappearance(this.scene);
-        this.feup.loadTexture("../resources/"+folder+"/feup.png");
-		this.feup.setAmbient(0.5,0.5,0.5,1);
-		this.feup.setDiffuse(0.2,0.2,0.2,1);
-		this.feup.setSpecular(0.1,0.1,0.1,1);	
-        this.feup.setShininess(100);
-
         this.snake = new CGFappearance(this.scene);
         this.snake.loadTexture("../resources/"+folder+"/carTopExtra.png");
 		this.snake.setAmbient(0.5,0.5,0.5,1);

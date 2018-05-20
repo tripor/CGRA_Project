@@ -1,8 +1,9 @@
 class Wheel extends CGFobject
 {
-	constructor(scene) 
+	constructor(scene,type) 
 	{
 		super(scene);
+		this.type=type;
         this.slices = 40;
         this.cilindro= new MyCylinder(this.scene,this.slices,3);
 
@@ -14,11 +15,21 @@ class Wheel extends CGFobject
 		this.scene.translate(0,0,-0.25);
 		this.scene.pushMatrix();
 			//console.log(this.scene.currVehicleAppearance);
-			this.scene.vehicleAppearances[this.scene.currVehicleAppearance].wheel_rim_image.apply();
+			if(this.type==1){
+				this.scene.vehicleAppearances[this.scene.currVehicleAppearance].black.apply();
+			}
+			else {
+				this.scene.vehicleAppearances[this.scene.currVehicleAppearance].wheel_rim_image.apply();
+			}
             super.display();
 		this.scene.popMatrix();
         this.scene.pushMatrix();
-		this.scene.vehicleAppearances[this.scene.currVehicleAppearance].tire_image.apply();
+		if(this.type==1){
+			this.scene.vehicleAppearances[this.scene.currVehicleAppearance].black.apply();
+		}
+		else {
+			this.scene.vehicleAppearances[this.scene.currVehicleAppearance].tire_image.apply();
+		}
             this.cilindro.display();
 		this.scene.popMatrix();
 		this.scene.pushMatrix();

@@ -80,6 +80,7 @@ class LightingScene extends CGFscene
 		//-----------------------------------Scene elements------------------------------------------
 		this.car = new Car(this);
 		this.terrain =  new MyTerrain(this,50,this.altimetry);
+		this.crane = new MyCrane(this);
 
 		//-----------------------------------End Scene elements--------------------------------------
 		this.setUpdatePeriod(1000/FPS);
@@ -166,11 +167,14 @@ class LightingScene extends CGFscene
 			this.rotate(-this.turn*degToRad,0,1,0);
 			this.car.display();
 		this.popMatrix();
-
+		//--------------Terrain----------------
 		this.pushMatrix();
 			this.terrain.display();
 		this.popMatrix();
-
+		//--------------Crane------------------
+		this.pushMatrix();
+			this.crane.display();
+		this.popMatrix();
 		//----------------------------END Scene drawing section----------------------------------
 
 
