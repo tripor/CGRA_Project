@@ -27,8 +27,6 @@ class MyInterface extends CGFinterface {
 		group.add(this.scene, 'Light_2');
 		
 		var group2= this.gui.addFolder("Useless Options");
-
-		group2.open();
 		group2.add(this.scene, 'Inercia_Cancelation');
 		group2.add(this.scene, 'Atrito');
 		group2.add(this.scene, 'atrito_valor',0.0,2.0);
