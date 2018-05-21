@@ -1,10 +1,8 @@
-class MyTerrain extends CGFobject
+class MyTerrain extends Plane
 {
 	constructor(scene,divisions,altimetry) 
 	{
-		super(scene);
-		this.plano=new Plane(scene,divisions,50);
-		this.altimetry=altimetry;
+		super(scene,divisions,divisions,altimetry);
 
         this.material_ground = new CGFappearance(this.scene);
 		this.material_ground.loadTexture("../resources/geral/terrain.png");
@@ -21,16 +19,16 @@ class MyTerrain extends CGFobject
             this.scene.scale(50,1,50);
             this.scene.rotate(-90*degToRad,1,0,0);
             this.material_ground.apply();
-			this.plano.display();
+			super.display();
 		this.scene.popMatrix();
     }
 
-	initBuffers() 
+	/*initBuffers() 
 	{
 		this.vertices=[];
 		this.normals=[];
 		this.indices=[];
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
-	};
+	};*/
 };

@@ -79,7 +79,7 @@ class LightingScene extends CGFscene
 		];
 		//-----------------------------------Scene elements------------------------------------------
 		this.car = new Car(this);
-		this.terrain =  new MyTerrain(this,50,this.altimetry);
+		this.terrain =  new MyTerrain(this,this.altimetry.length-1,this.altimetry);
 		this.crane = new MyCrane(this);
 
 		//-----------------------------------End Scene elements--------------------------------------

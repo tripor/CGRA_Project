@@ -2,10 +2,11 @@
 /** Represents a plane with nrDivs divisions along both axis, with center at (0,0) */
 class Plane extends CGFobject{
 
-	constructor(scene, nrDivs, propocao) 
+	constructor(scene, nrDivs, propocao,altimetry) 
 	{
 		super(scene);
 
+		this.altimetry=altimetry;
 		// nrDivs = 1 if not provided
 		nrDivs = typeof nrDivs !== 'undefined' ? nrDivs : 1;
 
@@ -32,7 +33,8 @@ class Plane extends CGFobject{
 			var x=0;
 			for (var i = 0; i <= this.nrDivs; i++) 
 			{
-				this.vertices.push(xCoord, yCoord, 0);
+				console.log(j+" "+i)
+				this.vertices.push(xCoord, yCoord, this.altimetry[j][i]);
 				this.texCoords.push(x,y);
 				
 				this.normals.push(0,0,1);
