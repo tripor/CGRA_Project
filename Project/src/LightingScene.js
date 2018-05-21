@@ -29,8 +29,8 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 		//-----------------------------------Values--------------------------------------------------
 		this.velocidade=0.0;
-		this.pos_x=2;
-		this.pos_y=0;
+		this.pos_x=5;
+		this.pos_y=4;
 		this.direcao=0;
 		this.turn=0;
 		this.Estabilizacao=5;
@@ -67,15 +67,21 @@ class LightingScene extends CGFscene
 		//----------------------------------Terrain altimetry----------------------------------------
 		//example for nrDivs = 8 -> grid of 9x9 vertices     
 		this.altimetry= [
-			[ 2.0 , 3.0 , 2.0, 4.0, 2.5, 2.4, 2.3, 1.3 ],
-		  	[ 2.0 , 3.0 , 2.0, 4.0, 7.5, 6.4, 4.3, 1.3 ],
-		   	[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
-			[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ],
-			[ 0.0 , 0.0 , 2.0, 4.0, 2.5, 2.4, 0.0, 0.0 ],
-			[ 0.0 , 0.0 , 2.0, 4.0, 3.5, 2.4, 0.0, 0.0 ], 
-			[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ], 
-			[ 0.0 , 0.0 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ], 
-			[ 2.0 , 3.0 , 2.0, 1.0, 2.5, 2.4, 2.3, 1.3 ] 
+			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()],
+			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()],
+		   	[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()]
 		];
 		//-----------------------------------Scene elements------------------------------------------
 		this.car = new Car(this);
@@ -85,6 +91,13 @@ class LightingScene extends CGFscene
 		//-----------------------------------End Scene elements--------------------------------------
 		this.setUpdatePeriod(1000/FPS);
 	};
+
+	randomValue()
+	{
+		var num = Math.floor(Math.random()*5) + 1;
+		num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		return num ;
+	}
 
 	initCameras() 
 	{

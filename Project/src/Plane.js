@@ -33,8 +33,10 @@ class Plane extends CGFobject{
 			var x=0;
 			for (var i = 0; i <= this.nrDivs; i++) 
 			{
-				console.log(j+" "+i)
-				this.vertices.push(xCoord, yCoord, this.altimetry[j][i]);
+				if(this.altimetry)
+					this.vertices.push(xCoord, yCoord, this.altimetry[j][i]);
+				else
+					this.vertices.push(xCoord, yCoord,0);
 				this.texCoords.push(x,y);
 				
 				this.normals.push(0,0,1);
