@@ -16,8 +16,6 @@ class MyTerrain extends Plane
     {
         this.scene.pushMatrix();
             this.scene.translate(0,0,50);
-            this.scene.scale(50,1,50);
-            this.scene.rotate(-90*degToRad,1,0,0);
 			this.scene.scale(50,1,50);
 			this.scene.rotate(-90*degToRad,1,0,0);
             this.material_ground.apply();
@@ -25,15 +23,8 @@ class MyTerrain extends Plane
 		this.scene.popMatrix();
     }
 
-	/*initBuffers() 
 	canGoHere(pos_y,pos_x,width,height,turn)
 	{
-		this.vertices=[];
-		this.normals=[];
-		this.indices=[];
-		this.primitiveType = this.scene.gl.TRIANGLES;
-		this.initGLBuffers();
-	};*/
 		pos_x = 50-pos_x;
 
 		let conta=(this.altimetry.length-1)/50;

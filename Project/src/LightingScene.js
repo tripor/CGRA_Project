@@ -313,8 +313,6 @@ class LightingScene extends CGFscene
 				if(this.direcao<0)this.direcao=0;
 			}
 		}
-		this.pos_x+=this.velocidade*this.deltatime/1000 * Math.cos(this.turn*degToRad);
-		this.pos_y+=this.velocidade*this.deltatime/1000 * Math.sin(this.turn*degToRad);
 		var novo_x=this.pos_x+this.velocidade*this.deltatime/1000 * Math.cos(this.turn*degToRad);
 		var novo_y=this.pos_y+this.velocidade*this.deltatime/1000 * Math.sin(this.turn*degToRad);
 		if(this.terrain.canGoHere(novo_x,novo_y,this.car.valorWidth(),this.car.valorHeight(),this.turn))
