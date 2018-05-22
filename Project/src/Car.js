@@ -135,4 +135,14 @@ class Car extends CGFobject
         this.turning=-direcao;
         this.wheel_rad+=(this.wheelRadius*velocidade)/(this.wheelRadius*this.wheelRadius);
 	}
+    }
+    
+    valorWidth()
+    {
+        return 4.65;
+    }
+    valorHeight()
+    {
+        return 2;
+    }
 };
