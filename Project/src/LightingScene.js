@@ -27,7 +27,7 @@ class LightingScene extends CGFscene
 		this.gl.depthFunc(this.gl.LEQUAL);
 
 		this.axis = new CGFaxis(this);
-		//-----------------------------------Values--------------------------------------------------
+		//-----------------------------------Car Values--------------------------------------------------
 		this.velocidade=0.0;
 		this.pos_x=5;
 		this.pos_y=4;
@@ -40,6 +40,14 @@ class LightingScene extends CGFscene
 		this.Atrito=false;
 		this.atrito_valor=0.1;
 		this.Turning_hack=false;
+		//-----------------------------------Crane Values--------------------------------------------
+		this.craneAnim=false;
+		this.craneRotation=0;
+		this.ropeAnim=false;
+		this.craneRope=false;
+		this.return=false;
+		this.ropeDrop=0;
+		this.armAngle=0;
 		//-----------------------------------Interface-----------------------------------------------
 
 		this.speed=5;
@@ -71,14 +79,14 @@ class LightingScene extends CGFscene
 			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()],
 		   	[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0				  , this.randomValue(), this.randomValue(), 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue(), 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0			 	  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , this.randomValue(), this.randomValue(), 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue(), 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()]
@@ -87,6 +95,7 @@ class LightingScene extends CGFscene
 		this.car = new Car(this);
 		this.terrain =  new MyTerrain(this,this.altimetry.length-1,this.altimetry);
 		this.crane = new MyCrane(this);
+		this.quad = new MyQuad(this,0);
 
 		//-----------------------------------End Scene elements--------------------------------------
 		this.setUpdatePeriod(1000/FPS);
@@ -94,8 +103,8 @@ class LightingScene extends CGFscene
 
 	randomValue()
 	{
-		var num = Math.floor(Math.random()*5) + 1;
-		num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
+		var num = Math.floor(Math.random()*4) + 1;
+		num *= Math.floor(Math.random()*2) == 1 ? 1 : 0;
 		return num ;
 	}
 
@@ -176,7 +185,8 @@ class LightingScene extends CGFscene
 
 		//---------------Car-------------------
 		this.pushMatrix();
-			this.translate(this.pos_x, 0, this.pos_y);
+			this.translate(25,0,19.2);
+			//this.translate(this.pos_x, 0, this.pos_y);
 			this.rotate(-this.turn*degToRad,0,1,0);
 			this.car.display();
 		this.popMatrix();
@@ -186,7 +196,25 @@ class LightingScene extends CGFscene
 		this.popMatrix();
 		//--------------Crane------------------
 		this.pushMatrix();
+			this.translate(27,0,25);
+			this.rotate(180*degToRad,0,1,0);
+			this.rotate(this.craneRotation*degToRad,0,1,0);
 			this.crane.display();
+		this.popMatrix();
+		//----------Crane Pick up and Drop-----
+		this.pushMatrix();
+			this.translate(27,0.01,20.5);
+			this.scale(4,1,4);
+			this.rotate(-90*degToRad,1,0,0);
+			this.vehicleAppearances[this.currVehicleAppearance].black.apply();
+			this.quad.display();
+		this.popMatrix();
+		this.pushMatrix();
+			this.translate(27,0.01,29.5);
+			this.scale(6,1,6);
+			this.rotate(-90*degToRad,1,0,0);
+			this.vehicleAppearances[this.currVehicleAppearance].black.apply();
+			this.quad.display();
 		this.popMatrix();
 		//----------------------------END Scene drawing section----------------------------------
 
@@ -232,6 +260,11 @@ class LightingScene extends CGFscene
 		}
 		else
 			this.isTurning=this.isTurning || false;
+		//------------Crane-------------
+		if (this.gui.isKeyPressed("KeyQ"))
+		{
+			this.craneAnim=true;
+		}
 	};
 
 
@@ -270,7 +303,60 @@ class LightingScene extends CGFscene
 				if(this.velocidade<0)this.velocidade=0;
 			}
 		}
+
 		this.car.update(this.direcao,this.velocidade);
+
+		//-------------------Crane Animation--------------
+		if(this.craneAnim==true){
+			if(this.craneRotation>=180) {
+				this.craneAnim=false;
+				this.craneRope=true;
+				this.craneRotation=180;
+			}
+			else{
+			this.craneRotation+=0.8;
+			}
+		}
+
+		if(this.craneRope==true){
+			
+				if(this.ropeDrop>=1.134){
+					this.reverse = true;
+					this.craneRope=false;
+					this.crane.updateCrane(true,0.01,1.134);
+				}
+				else{
+					this.ropeDrop+=0.01;
+					this.crane.updateCrane(false,0.01,1.134);
+				}			
+		}
+
+		if(this.reverse==true){
+
+			if(this.ropeDrop<=0){
+				this.reverse=false;
+				this.return=true;
+				this.crane.updateCrane(true,-0.01,0);
+				
+			}
+			else{
+				this.ropeDrop-=0.01;
+				this.crane.updateCrane(false,-0.01,0);
+			}
+		}
+		
+		if(this.return==true){
+			if(this.craneRotation<=0) {
+				this.return=false;
+				this.craneRotation=0;
+			}
+			else{
+			this.craneRotation-=0.8;
+			}
+		}
+
+		
 		this.checkKeys();
 	};
+
 };

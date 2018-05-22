@@ -6,8 +6,8 @@ class MyTerrain extends Plane
 
         this.material_ground = new CGFappearance(this.scene);
 		this.material_ground.loadTexture("../resources/geral/terrain.png");
-		this.material_ground.setAmbient(0.5,0.5,0.5,1);
-		this.material_ground.setDiffuse(0.6,0.6,0.6,1);
+		this.material_ground.setAmbient(0.3,0.3,0.3,1);
+		this.material_ground.setDiffuse(1,1,1,1);
 		this.material_ground.setSpecular(0.1,0.1,0.1,1);
 		this.material_ground.setShininess(100);
     };

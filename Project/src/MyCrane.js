@@ -14,10 +14,12 @@ class MyCrane extends CGFobject
 		this.armLength=2;
 		this.ropeSize=2;
 
-		this.groundHeightSubtraction=0; //THIS IS THE ANIMATION VARIABLE
+		this.groundHeightSubtraction=0; //THIS IS THE ANIMATION VARIABLE AND GOES UP TO 1.134
 		this.armAngle=Math.asin(this.groundHeightSubtraction/this.armLength);
 		//-----------------------------
-
+		this.ropeAnim=true;
+		this.reverse=false;
+		
 		this.initBuffers();
 	};
 
@@ -71,6 +73,18 @@ class MyCrane extends CGFobject
 			this.scene.scale(0.8,0.8,0.15);
 			this.cilindro.display();
 		this.scene.popMatrix();
-    }
+	}
+	
+	updateCrane(end,value,final)
+	{	
+		if(end==false){
+			this.groundHeightSubtraction+=value;
+			this.armAngle=Math.asin(this.groundHeightSubtraction/this.armLength);
+		}
+		else {
+			this.groundHeightSubtraction=final;
+			this.armAngle=Math.asin(this.groundHeightSubtraction/this.armLength);
+		}
+	}
 
 };
