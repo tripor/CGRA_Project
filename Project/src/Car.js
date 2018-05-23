@@ -38,7 +38,7 @@ class Car extends CGFobject
 
     display()
     {
-        this.scene.translate(-2,0,-2);
+        this.scene.translate(0.5,0,-0.2);
         this.scene.pushMatrix();
             super.display();
         this.scene.popMatrix()

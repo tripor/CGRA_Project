@@ -28,7 +28,6 @@ class MyTerrain extends Plane
 		pos_x = 50-pos_x; //+2
 		//pos_y=pos_y-2;
 		
-
 		let conta=(this.altimetry.length-1)/50;
 
 		var ponto2x=Math.sin(turn*degToRad)*-width+pos_x;
@@ -43,8 +42,12 @@ class MyTerrain extends Plane
 		var ponto4x=Math.sin(angulo)*comprimento+pos_x;
 		var ponto4y=Math.cos(angulo)*comprimento+pos_y;
 
+		console.log(pos_x+ " "+pos_y+"|"+ponto2x+" "+ponto2y+"|"+ponto3x+" "+ponto3y+"|"+ponto4x+" "+ponto4y);
+
 		pos_x=pos_x*conta;
 		pos_y=pos_y*conta;
+
+		
 
 		if(this.altimetry[Math.floor(pos_x)][Math.floor(pos_y)]==0 && this.altimetry[ Math.floor(pos_x)][ Math.ceil(pos_y)]==0 && this.altimetry[Math.ceil(pos_x)][Math.floor(pos_y)]==0 && this.altimetry[ Math.ceil(pos_x)][ Math.ceil(pos_y)]==0)
 		{
