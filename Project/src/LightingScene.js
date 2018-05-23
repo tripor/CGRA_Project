@@ -104,6 +104,10 @@ class LightingScene extends CGFscene
 		this.crane = new MyCrane(this);
 		this.quad = new MyQuad(this,0);
 
+		this.cylinder= new Wheel(this);
+		this.trapeze= new CarTop(this,0.74,1.5,1);
+		this.lamp = new MyLamp(this,10,10);
+
 		//-----------------------------------End Scene elements--------------------------------------
 		this.setUpdatePeriod(1000/FPS);
 	};
@@ -235,6 +239,21 @@ class LightingScene extends CGFscene
 			this.rotate(-90*degToRad,1,0,0);
 			this.vehicleAppearances[this.currVehicleAppearance].black.apply();
 			this.quad.display();
+		this.popMatrix();
+		//-----------Solo Objects---------------
+		this.pushMatrix();
+			this.translate(0,18,0);
+			this.cylinder.display()
+		this.popMatrix();
+		this.pushMatrix();
+			this.translate(4,20,4);
+			this.scale(3,3,3);
+			this.trapeze.display()
+		this.popMatrix();
+		this.pushMatrix();
+			this.translate(0,15,0);
+			this.vehicleAppearances[this.currVehicleAppearance].lights.apply();
+			this.lamp.display()
 		this.popMatrix();
 		//----------------------------END Scene drawing section----------------------------------
 
