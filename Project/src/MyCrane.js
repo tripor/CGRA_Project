@@ -22,6 +22,7 @@ class MyCrane extends CGFobject
 		this.carX=0;
 		this.carY=0;
 		this.carRot=0;
+		this.drop=0; //goes to 1.134
 		
 		this.initBuffers();
 	};
@@ -79,7 +80,7 @@ class MyCrane extends CGFobject
 		//----------------Car---------------------------
 		this.scene.pushMatrix();
 			this.scene.translate(0,Math.cos(this.baseAngle)*this.baseHeight-this.ropeSize-Math.sin(this.armAngle)*this.armLength,-(this.armLength-Math.cos(this.armAngle)*this.armLength)+0.352564417);  //0.3525... = inverso
-			this.scene.translate(-this.carX+27,-2.06,-this.carY+25);
+			this.scene.translate(-this.carX+27,-2.06-this.drop,-this.carY+25);
 			this.scene.rotate(this.carRot+180*degToRad,0,1,0);
 			this.scene.translate(0,0,1);
 			if(this.carDisplay==true) this.car.display();
@@ -104,6 +105,22 @@ class MyCrane extends CGFobject
 		this.carX=carX;
 		this.carY=carY;
 		this.carRot=carRot;
+		this.drop=0;
 	}
+
+	dropCar()
+	{
+		if(this.drop>=1.134){
+			this.carDisplay=false;
+			this.drop=1.134;
+			return true;
+		}
+		else {
+			this.drop=(this.drop+0.01)*1.1;
+			return false;
+		}
+	}
+
+	
 
 };

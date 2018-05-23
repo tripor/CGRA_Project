@@ -285,7 +285,7 @@ class LightingScene extends CGFscene
 		{
 			console.log(this.pos_x);
 			console.log(this.pos_y);
-			if(this.pos_x>=23.5 && this.pos_x <=67.5 && this.pos_y>=17.7 && this.pos_y<=20.7 && this.velocidade==0){
+			if(this.pos_x>=23.5 && this.pos_x <=67.5 && this.pos_y>=17.7 && this.pos_y<=21.7 && this.velocidade==0){
 			this.craneAnim=true;
 			this.keyBlock=true;
 			}
@@ -382,6 +382,7 @@ class LightingScene extends CGFscene
 			if(this.craneRotation<=0) {
 				this.return=false;
 				this.craneRotation=0;
+				this.carDrop=true;
 			}
 			else{
 			this.craneRotation-=0.8;
@@ -397,9 +398,22 @@ class LightingScene extends CGFscene
 			
 		}
 		
+		if(this.carDrop==true){
+			this.carUp=false;
+			if(this.crane.dropCar()) this.updateCarPos();
+		}
 		//this.turn+=0.5;
 
 		if(this.keyBlock==false) this.checkKeys();
 	};
 
+	updateCarPos(x,y){
+		this.pos_x=27+27-this.pos_x;
+		this.pos_y=25+25-this.pos_y+0.35;
+		this.turn+=180;
+		this.carUp=false;
+		this.carDrop=false;
+		this.carDisplay=true;
+		this.keyBlock=false;
+	}
 };
