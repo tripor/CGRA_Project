@@ -42,7 +42,7 @@ class MyTerrain extends Plane
 		var ponto4x=Math.sin(angulo)*comprimento+pos_x;
 		var ponto4y=Math.cos(angulo)*comprimento+pos_y;
 
-		console.log(pos_x+ " "+pos_y+"|"+ponto2x+" "+ponto2y+"|"+ponto3x+" "+ponto3y+"|"+ponto4x+" "+ponto4y);
+		//console.log(pos_x+ " "+pos_y+"|"+ponto2x+" "+ponto2y+"|"+ponto3x+" "+ponto3y+"|"+ponto4x+" "+ponto4y);
 
 		pos_x=pos_x*conta;
 		pos_y=pos_y*conta;
