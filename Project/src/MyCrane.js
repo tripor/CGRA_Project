@@ -6,6 +6,7 @@ class MyCrane extends CGFobject
         this.slices = 40;
 		this.cilindro= new Wheel(this.scene,1);
 		this.cube=new MyUnitCubeQuad(this.scene);
+		this.car = new Car(this.scene);
 		
 		//----------Variables(Editable)----------
 		//All Variables are connected and therefore can be changed easily
@@ -17,8 +18,10 @@ class MyCrane extends CGFobject
 		this.groundHeightSubtraction=0; //THIS IS THE ANIMATION VARIABLE AND GOES UP TO 1.134
 		this.armAngle=Math.asin(this.groundHeightSubtraction/this.armLength);
 		//-----------------------------
-		this.ropeAnim=true;
-		this.reverse=false;
+		this.carDisplay=false;
+		this.carX=0;
+		this.carY=0;
+		this.carRot=0;
 		
 		this.initBuffers();
 	};
@@ -70,8 +73,16 @@ class MyCrane extends CGFobject
 			this.scene.translate(0,Math.cos(this.baseAngle)*this.baseHeight-this.ropeSize,Math.sin(this.baseAngle)*this.baseHeight+this.armLength-0.1);
 			this.scene.translate(0,-Math.sin(this.armAngle)*this.armLength,-(this.armLength-Math.cos(this.armAngle)*this.armLength));
 			this.scene.rotate(90*degToRad,1,0,0);
-			this.scene.scale(0.8,0.8,0.15);
+			this.scene.scale(1,1,0.15);
 			this.cilindro.display();
+		this.scene.popMatrix();
+		//----------------Car---------------------------
+		this.scene.pushMatrix();
+			this.scene.translate(0,Math.cos(this.baseAngle)*this.baseHeight-this.ropeSize-Math.sin(this.armAngle)*this.armLength,-(this.armLength-Math.cos(this.armAngle)*this.armLength)+0.352564417);  //0.3525... = inverso
+			this.scene.translate(-this.carX+27,-2.06,-this.carY+25);
+			this.scene.rotate(this.carRot+180*degToRad,0,1,0);
+			this.scene.translate(0,0,1);
+			if(this.carDisplay==true) this.car.display();
 		this.scene.popMatrix();
 	}
 	
@@ -85,6 +96,14 @@ class MyCrane extends CGFobject
 			this.groundHeightSubtraction=final;
 			this.armAngle=Math.asin(this.groundHeightSubtraction/this.armLength);
 		}
+	}
+
+	carOn(carX,carY,carRot)
+	{
+		this.carDisplay=true;
+		this.carX=carX;
+		this.carY=carY;
+		this.carRot=carRot;
 	}
 
 };

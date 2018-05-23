@@ -38,6 +38,7 @@ class Car extends CGFobject
 
     display()
     {
+        this.scene.translate(-2,0,-2);
         this.scene.pushMatrix();
             super.display();
         this.scene.popMatrix()
@@ -142,6 +143,6 @@ class Car extends CGFobject
     }
     valorHeight()
     {
-        return 2;
+        return 2.1;
     }
 };

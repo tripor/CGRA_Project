@@ -29,8 +29,8 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 		//-----------------------------------Car Values--------------------------------------------------
 		this.velocidade=0.0;
-		this.pos_x=5;
-		this.pos_y=4;
+		this.pos_x=8; //5
+		this.pos_y=7; //4
 		this.direcao=0;
 		this.turn=0;
 		this.Estabilizacao=5;
@@ -48,6 +48,13 @@ class LightingScene extends CGFscene
 		this.return=false;
 		this.ropeDrop=0;
 		this.armAngle=0;
+		//Car related
+		this.carUp=false;
+		this.carDisplay=true;
+		this.carRot = false;
+		this.carDrop=false;
+		this.pos_z=0;
+		this.keyBlock=false;
 		//-----------------------------------Interface-----------------------------------------------
 
 		this.speed=5;
@@ -79,25 +86,14 @@ class LightingScene extends CGFscene
 			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()],
 		   	[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
-<<<<<<< HEAD
-			[ this.randomValue() , 0.0                , 0.0               , 0.0				  , this.randomValue(), this.randomValue(), 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue(), 0.0               , 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0			 	  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , 0.0               , this.randomValue(), this.randomValue(), 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue(), 0.0               , 0.0               , 0.0               , this.randomValue()],
-=======
-			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), 0.0               , 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), this.randomValue(), 0.0               , 0.0               , 0.0               , this.randomValue()],
-			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , this.randomValue(), this.randomValue(), 0.0               , 0.0               , this.randomValue(), 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
->>>>>>> c2067d3239147076f8f47135cfbac6b27d69aa22
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0				  , 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , this.randomValue(), 0.0				  , 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0				  , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0				  , this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0				  , this.randomValue(), 0.0               , 0.0               , this.randomValue()], 
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0				  , this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , this.randomValue(), this.randomValue(), this.randomValue(), 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0				  , this.randomValue(), 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , this.randomValue(), 0.0				  , 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0				  , 0.0               , 0.0               , 0.0               , this.randomValue()],
+			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0				  , 0.0				  , 0.0               , 0.0               , 0.0				  , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , 0.0                , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , 0.0               , this.randomValue()],
 			[ this.randomValue() , this.randomValue() , this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue(), this.randomValue()]
@@ -114,13 +110,10 @@ class LightingScene extends CGFscene
 
 	randomValue()
 	{
-<<<<<<< HEAD
 		var num = Math.floor(Math.random()*4) + 1;
 		num *= Math.floor(Math.random()*2) == 1 ? 1 : 0;
-=======
 		var num = Math.floor(Math.random()*7) + 4;
 		//num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
->>>>>>> c2067d3239147076f8f47135cfbac6b27d69aa22
 		return num ;
 	}
 
@@ -211,10 +204,11 @@ class LightingScene extends CGFscene
 
 		//---------------Car-------------------
 		this.pushMatrix();
-			this.translate(25,0,19.2);
-			//this.translate(this.pos_x, 0, this.pos_y);
+			//this.translate(25,0,18.2);
+			this.translate(this.pos_x, this.pos_z, this.pos_y);
 			this.rotate(-this.turn*degToRad,0,1,0);
-			this.car.display();
+			this.translate(0,0,1);
+			if(this.carDisplay==true) this.car.display();
 		this.popMatrix();
 		//--------------Terrain----------------
 		this.pushMatrix();
@@ -223,7 +217,7 @@ class LightingScene extends CGFscene
 		//--------------Crane------------------
 		this.pushMatrix();
 			this.translate(27,0,25);
-			this.rotate(180*degToRad,0,1,0);
+			//this.rotate(180*degToRad,0,1,0);
 			this.rotate(this.craneRotation*degToRad,0,1,0);
 			this.crane.display();
 		this.popMatrix();
@@ -289,7 +283,12 @@ class LightingScene extends CGFscene
 		//------------Crane-------------
 		if (this.gui.isKeyPressed("KeyQ"))
 		{
+			console.log(this.pos_x);
+			console.log(this.pos_y);
+			if(this.pos_x>=23.5 && this.pos_x <=67.5 && this.pos_y>=17.7 && this.pos_y<=20.7 && this.velocidade==0){
 			this.craneAnim=true;
+			this.keyBlock=true;
+			}
 		}
 	};
 
@@ -357,6 +356,7 @@ class LightingScene extends CGFscene
 					this.reverse = true;
 					this.craneRope=false;
 					this.crane.updateCrane(true,0.01,1.134);
+					this.carUp=true;
 				}
 				else{
 					this.ropeDrop+=0.01;
@@ -388,8 +388,18 @@ class LightingScene extends CGFscene
 			}
 		}
 
+		//--------------------Car on Crane----------
+
+		if(this.carUp==true){
+			this.carDisplay=false;		
+			this.crane.carOn(this.pos_x,this.pos_y,-this.turn*degToRad);
+			this.speed=0;
+			
+		}
 		
-		this.checkKeys();
+		//this.turn+=0.5;
+
+		if(this.keyBlock==false) this.checkKeys();
 	};
 
 };

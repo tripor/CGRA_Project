@@ -6,8 +6,8 @@ class MyTerrain extends Plane
 		this.altimetry=altimetry;
         this.material_ground = new CGFappearance(this.scene);
 		this.material_ground.loadTexture("../resources/geral/terrain.png");
-		this.material_ground.setAmbient(0.3,0.3,0.3,1);
-		this.material_ground.setDiffuse(1,1,1,1);
+		this.material_ground.setAmbient(0.5,0.5,0.5,1);
+		this.material_ground.setDiffuse(0.6,0.6,0.6,1);
 		this.material_ground.setSpecular(0.1,0.1,0.1,1);
 		this.material_ground.setShininess(100);
     };
@@ -25,7 +25,9 @@ class MyTerrain extends Plane
 
 	canGoHere(pos_y,pos_x,width,height,turn)
 	{
-		pos_x = 50-pos_x;
+		pos_x = 50-pos_x+2;
+		pos_y=pos_y-2;
+		
 
 		let conta=(this.altimetry.length-1)/50;
 
