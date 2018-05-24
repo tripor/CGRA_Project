@@ -304,10 +304,12 @@ class LightingScene extends CGFscene
 		{
 			console.log(this.pos_x);
 			console.log(this.pos_y);
-			if(this.pos_x>=23.5 && this.pos_x <=67.5 && this.pos_y>=17.7 && this.pos_y<=21.7 && this.velocidade==0){
+			if(this.pos_x>=25.5+2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_x <=29.5+2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_y>=19.7-2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_y<=23.7-2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.velocidade==0){
 			this.craneAnim=true;
 			this.keyBlock=true;
 			}
+			console.log(Math.sin(this.turn*degToRad));
+			console.log(Math.cos(this.turn*degToRad));
 		}
 	};
 
