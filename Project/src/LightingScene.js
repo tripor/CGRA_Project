@@ -114,9 +114,9 @@ class LightingScene extends CGFscene
 
 	randomValue()
 	{
-		var num = Math.floor(Math.random()*4) + 1;
-		num *= Math.floor(Math.random()*2) == 1 ? 1 : 0;
-		var num = Math.floor(Math.random()*7) + 4;
+		var num = Math.floor(Math.random()*3) + 1;
+		num *= Math.floor(Math.random()*1) == 1 ? 1 : 0;
+		var num = Math.floor(Math.random()*6) + 4;
 		//num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		return num ;
 	}
@@ -304,7 +304,8 @@ class LightingScene extends CGFscene
 		{
 			console.log(this.pos_x);
 			console.log(this.pos_y);
-			if(this.pos_x>=25.5+2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_x <=29.5+2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_y>=19.7-2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_y<=23.7-2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.velocidade==0){
+			if(this.pos_x>=25.5+2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_x <=29.5+2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) 
+			&& this.pos_y>=18.7-2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.pos_y<=21.2-2*Math.sin(this.turn*degToRad)-2*Math.cos(this.turn*degToRad) && this.velocidade==0){
 			this.craneAnim=true;
 			this.keyBlock=true;
 			}
