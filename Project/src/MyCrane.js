@@ -87,10 +87,10 @@ class MyCrane extends CGFobject
 		this.scene.popMatrix();
 	}
 	
-	updateCrane(end,value,final)
+	updateCrane(end,value,final,deltatime)
 	{	
 		if(end==false){
-			this.groundHeightSubtraction+=value;
+			this.groundHeightSubtraction+=value*deltatime/50;
 			this.armAngle=Math.asin(this.groundHeightSubtraction/this.armLength);
 		}
 		else {
@@ -108,7 +108,7 @@ class MyCrane extends CGFobject
 		this.drop=0;
 	}
 
-	dropCar()
+	dropCar(deltatime)
 	{
 		if(this.drop>=1.134){
 			this.carDisplay=false;
@@ -116,7 +116,7 @@ class MyCrane extends CGFobject
 			return true;
 		}
 		else {
-			this.drop=(this.drop+0.01)*1.1;
+			this.drop=(this.drop+0.01*deltatime/50)*1.1;
 			return false;
 		}
 	}

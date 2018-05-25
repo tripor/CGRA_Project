@@ -368,7 +368,7 @@ class LightingScene extends CGFscene
 				this.craneRotation=180;
 			}
 			else{
-			this.craneRotation+=0.8;
+			this.craneRotation+=0.8*this.deltatime/50;
 			}
 		}
 
@@ -377,12 +377,12 @@ class LightingScene extends CGFscene
 				if(this.ropeDrop>=1.134){
 					this.reverse = true;
 					this.craneRope=false;
-					this.crane.updateCrane(true,0.01,1.134);
+					this.crane.updateCrane(true,0.01,1.134,this.deltatime);
 					this.carUp=true;
 				}
 				else{
-					this.ropeDrop+=0.01;
-					this.crane.updateCrane(false,0.01,1.134);
+					this.ropeDrop+=0.01*this.deltatime/50;
+					this.crane.updateCrane(false,0.01,1.134,this.deltatime);
 				}			
 		}
 
@@ -391,12 +391,12 @@ class LightingScene extends CGFscene
 			if(this.ropeDrop<=0){
 				this.reverse=false;
 				this.return=true;
-				this.crane.updateCrane(true,-0.01,0);
+				this.crane.updateCrane(true,-0.01,0,this.deltatime);
 				
 			}
 			else{
-				this.ropeDrop-=0.01;
-				this.crane.updateCrane(false,-0.01,0);
+				this.ropeDrop-=0.01*this.deltatime/50;
+				this.crane.updateCrane(false,-0.01,0,this.deltatime);
 			}
 		}
 		
@@ -407,7 +407,7 @@ class LightingScene extends CGFscene
 				this.carDrop=true;
 			}
 			else{
-			this.craneRotation-=0.8;
+			this.craneRotation-=0.8*this.deltatime/50;
 			}
 		}
 
@@ -422,7 +422,7 @@ class LightingScene extends CGFscene
 		
 		if(this.carDrop==true){
 			this.carUp=false;
-			if(this.crane.dropCar()) this.updateCarPos();
+			if(this.crane.dropCar(this.deltatime)) this.updateCarPos();
 		}
 		//this.turn+=0.5;
 
