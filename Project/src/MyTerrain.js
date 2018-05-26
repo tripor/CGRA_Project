@@ -23,11 +23,10 @@ class MyTerrain extends Plane
 		this.scene.popMatrix();
     }
 
-	canGoHere(pos_y,pos_x,width,height,turn)
+	canGoHere(pos_y,pos_x,width,height,turn) //Colision calculations
 	{
-		pos_x = 50-pos_x; //+2
-		//pos_y=pos_y-2;
-		
+		pos_x = 50-pos_x; 
+			
 		let conta=(this.altimetry.length-1)/50;
 
 		var ponto2x=Math.sin(turn*degToRad)*-width+pos_x;
