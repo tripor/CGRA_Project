@@ -17,6 +17,7 @@ class CarSide extends CGFobject
 		this.wheelSpace = new SemiCircleCut(this.scene,curve,height,wheelDiam,direction);
 		this.wheelSpace2 = new SemiCircleCut(this.scene,curve,leastHeight,wheelDiam,direction);
 		
+		//----------Variables--------
 		this.curve=curve;
 		this.back=back;
 		this.middle=middle;

@@ -2,6 +2,7 @@
  * MyCustomTriangle
  * @constructor
  */
+//A triangle that doesnt need to have a 90 degree angle
 class MyCustomTriangle extends CGFobject
 {
 	constructor(scene,minHeight,maxHeight,length,direction) 

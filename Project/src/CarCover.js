@@ -32,13 +32,7 @@ class CarCover extends CGFobject
 
 	display() 
 	{
-        this.scene.pushMatrix();
-            this.scene.translate(1.1+this.back,this.height+0.45,1.2);
-            this.scene.rotate(-90*degToRad,1,0,0);
-            this.scene.scale(this.flatLength,2,0);
-            this.quad.display();
-        this.scene.popMatrix();
-
+        //cover quad
         this.scene.pushMatrix();
             this.scene.translate(1.6,this.height+0.45,1.2);
             this.scene.rotate(-90*degToRad,1,0,0);
@@ -46,7 +40,7 @@ class CarCover extends CGFobject
             this.quad.display();
         this.scene.popMatrix();
         
-        //leasHeight-0.4
+        //Right Light quad
         this.scene.pushMatrix();
             this.scene.translate(4.6,1,2.05);
             this.scene.rotate(90*degToRad,0,1,0);
@@ -54,7 +48,7 @@ class CarCover extends CGFobject
             this.scene.vehicleAppearances[this.scene.currVehicleAppearance].lights.apply();
             this.quad.display();
         this.scene.popMatrix();
-
+        //Left Light quad
         this.scene.pushMatrix();
             this.scene.translate(4.6,1,0.35);
             this.scene.rotate(90*degToRad,0,1,0);
@@ -70,24 +64,18 @@ class CarCover extends CGFobject
             this.scene.vehicleAppearances[this.scene.currVehicleAppearance].connection.apply();
             this.quad.display();
         this.scene.popMatrix();
-
+        
+        //Right Light cover
         this.scene.pushMatrix();
-            this.scene.translate(4.1,1.2,0.35);
+            this.scene.translate(4.1,1.2,2.05);
             this.scene.rotate(-90*degToRad,1,0,0);
             this.scene.rotate(this.rot,0,1,0);
             this.scene.scale(this.squarLength,this.leastHeight-0.4,1);
             this.scene.vehicleAppearances[this.scene.currVehicleAppearance].gray.apply();
             this.quad.display();
         this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-            this.scene.translate(4.1,1.2,2.05);
-            this.scene.rotate(-90*degToRad,1,0,0);
-            this.scene.rotate(this.rot,0,1,0);
-            this.scene.scale(this.squarLength,this.leastHeight-0.4,1);
-            this.quad.display();
-        this.scene.popMatrix();
-
+        
+        //Left Light Cover
         this.scene.pushMatrix();
             this.scene.translate(4.1,1.2,0.35);
             this.scene.rotate(-90*degToRad,1,0,0);
@@ -96,6 +84,7 @@ class CarCover extends CGFobject
             this.quad.display();
         this.scene.popMatrix();
         
+        //Front cover
         this.scene.pushMatrix();
             this.scene.translate(4.1,1.125,1.2);
             this.scene.rotate(-90*degToRad,1,0,0);
@@ -104,13 +93,14 @@ class CarCover extends CGFobject
             this.quad.display();
         this.scene.popMatrix();
 
-        //triangle 1 and 2
+        //Left triangle     Used to close the front gap for the lights and front cover
         this.scene.pushMatrix();
             this.scene.translate(4.6,1,0.5);
             this.scene.rotate(180*degToRad,0,1,0);
             this.tria.display();
         this.scene.popMatrix();
-
+        
+        //Right Triangle    Used to close the front gap for the lights and front cover
         this.scene.pushMatrix();
             this.scene.translate(4.6,1,1.9);
             this.scene.rotate(180*degToRad,0,1,0);

@@ -2,7 +2,9 @@
  * CarTop
  * @constructor
  */
-class CarTop extends CGFobject
+//-----this 3D trapeze is made with 2D trapezes and a quad. This is editable giving us the chance to use a bigger base
+//or smaller therefore extensive calculations
+ class CarTop extends CGFobject
 {
 	constructor(scene,height,bottomSquare,topSquare,type) 
 	{
@@ -14,7 +16,8 @@ class CarTop extends CGFobject
 
         this.quad = new MyQuad(this.scene);
 
-        const dif = (this.bottomSquare-this.topSquare)/2.830;
+        //----------Variables and calculations-------
+        const dif = (this.bottomSquare-this.topSquare)/2.830;  //2.830 is a const found to ensure there are no gaps or intersections betweet 2D trapezes
         const trapHeightA = Math.sqrt(2*Math.pow(dif,2));
         const trapHeightB = Math.sqrt(Math.pow(trapHeightA,2)+Math.pow(this.height,2));
         this.trapHeight = trapHeightB;
@@ -43,6 +46,7 @@ class CarTop extends CGFobject
 		    this.quad.display();
         this.scene.popMatrix();
         
+        //-------All 4 2D Trapezes-------
         this.scene.pushMatrix();
             this.scene.translate(-2,0,-2);
             this.scene.translate(-this.bottomSquare/2,0,(this.topSquare)/2+this.trapHeightA);

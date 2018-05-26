@@ -2,6 +2,7 @@
  * SemiCircleCutPush
  * @constructor
  */
+//Creates a square with a semi circle so the wheel can go through 
 class SemiCircleCut extends CGFobject
 {
 	constructor(scene,curve,height,wheelDiam,direction) 
@@ -19,13 +20,6 @@ class SemiCircleCut extends CGFobject
 	{
 
 		this.normals = [];
-	
-			/*this.texCoords = [
-			0 , 1 ,
-			1 , 1 ,
-			0 , 0 ,
-			1 , 0
-			]*/
 		this.texCoords=[];
 		this.vertices=[];
 		this.indices=[];

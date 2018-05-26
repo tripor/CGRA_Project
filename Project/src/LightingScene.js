@@ -29,8 +29,8 @@ class LightingScene extends CGFscene
 		this.axis = new CGFaxis(this);
 		//-----------------------------------Car Values--------------------------------------------------
 		this.velocidade=0.0;
-		this.pos_x=8; //5
-		this.pos_y=7; //4
+		this.pos_x=8; 
+		this.pos_y=7; 
 		this.direcao=0;
 		this.turn=0;
 		this.Estabilizacao=5;
@@ -117,7 +117,6 @@ class LightingScene extends CGFscene
 		var num = Math.floor(Math.random()*3) + 1;
 		num *= Math.floor(Math.random()*1) == 1 ? 1 : 0;
 		var num = Math.floor(Math.random()*6) + 4;
-		//num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
 		return num ;
 	}
 
@@ -166,18 +165,10 @@ class LightingScene extends CGFscene
 	display() 
 	{
 		this.currVehicleAppearance=this.VehicleAppearanceList.indexOf(this.Appearance);
-		// ---- BEGIN Background, camera and axis setup
 
 		// Clear image and depth buffer everytime we update the scene
 		this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
 		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
-
-		//this.camera.rotate(CGFcameraAxis.X,90*degToRad);
-		/*var comprimento=Math.sqrt(this.car.valorHeight()*this.car.valorHeight()/4+this.car.valorWidth()*this.car.valorWidth());
-		var angulo=-this.turn*degToRad-Math.tanh((this.car.valorHeight()/2)/this.car.valorWidth());
-		console.log(Math.cos(angulo)*comprimento)
-		this.camera.setPosition(vec3.fromValues(this.pos_x+1.5,2.5,this.pos_y+this.car.valorHeight()/2));
-		this.camera.setTarget(vec3.fromValues(Math.cos(angulo)*comprimento+this.pos_x,2,-Math.sin(angulo)*comprimento+this.pos_y));*/
 
 		// Initialize Model-View matrix as identity (no transformation)
 		this.updateProjectionMatrix();
@@ -200,12 +191,6 @@ class LightingScene extends CGFscene
 		// ---- END Background, camera and axis setup
 
 		//-------------------------BEGIN Scene drawing section------------------------------------
-		/*
-		this.pushMatrix();
-			
-		this.popMatrix();
-		*/
-
 		//---------------Car-------------------
 		this.pushMatrix();
 			//this.translate(25,0,18.2);
@@ -317,6 +302,7 @@ class LightingScene extends CGFscene
 
 	update(currTime)
 	{
+		//-------Car Animations------
 		this.lasttime=this.lasttime || currTime;
 		this.deltatime =currTime - this.lasttime;
 		this.lasttime=currTime;
@@ -361,6 +347,7 @@ class LightingScene extends CGFscene
 		this.car.update(this.direcao,this.velocidade);
 
 		//-------------------Crane Animation--------------
+		//Rotation
 		if(this.craneAnim==true){
 			if(this.craneRotation>=180) {
 				this.craneAnim=false;
@@ -371,7 +358,7 @@ class LightingScene extends CGFscene
 			this.craneRotation+=0.8*this.deltatime/50;
 			}
 		}
-
+		//Rope down
 		if(this.craneRope==true){
 			
 				if(this.ropeDrop>=1.134){
@@ -385,7 +372,7 @@ class LightingScene extends CGFscene
 					this.crane.updateCrane(false,0.01,1.134,this.deltatime);
 				}			
 		}
-
+		//Rope up
 		if(this.reverse==true){
 
 			if(this.ropeDrop<=0){
@@ -399,7 +386,7 @@ class LightingScene extends CGFscene
 				this.crane.updateCrane(false,-0.01,0,this.deltatime);
 			}
 		}
-		
+		//Rotation back
 		if(this.return==true){
 			if(this.craneRotation<=0) {
 				this.return=false;
@@ -412,21 +399,20 @@ class LightingScene extends CGFscene
 		}
 
 		//--------------------Car on Crane----------
-
+		//Stick car to crane
 		if(this.carUp==true){
 			this.carDisplay=false;		
 			this.crane.carOn(this.pos_x,this.pos_y,-this.turn*degToRad);
 			this.speed=0;
 			
 		}
-		
+		//Drop the car from the crane
 		if(this.carDrop==true){
 			this.carUp=false;
 			if(this.crane.dropCar(this.deltatime)) this.updateCarPos();
 		}
-		//this.turn+=0.5;
-
-		if(this.keyBlock==false) this.checkKeys();
+		
+		if(this.keyBlock==false) this.checkKeys(); //Blocks all keys
 	};
 
 	updateCarPos(x,y){

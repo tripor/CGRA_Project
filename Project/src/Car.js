@@ -8,12 +8,8 @@ class Car extends CGFobject
 		this.wheel3 = new Wheel(this.scene);
         this.wheel4 = new Wheel(this.scene);
 
-        this.bottomSquare=1.5;
-        this.top = new CarTop(this.scene,0.75,this.bottomSquare,1);  
-        this.carBack = new CarTop(this.scene,1,4,2,1);
-        this.carMiddleFront = new CarTop(this.scene,0.5,4,3,2);
-        
         //-----Variables-----
+        this.bottomSquare=1.5;
         this.turning=0;
         this.wheel_rad=0;
         this.back=0.5;
@@ -23,14 +19,14 @@ class Car extends CGFobject
         this.leastHeight=0.7;
         this.front=0.2;
         this.curve=16;
-        //--------------------
-
         this.flatLength=this.back+this.wheelRadius*2+this.middle;
+        //------Elements------
+        this.top = new CarTop(this.scene,0.75,this.bottomSquare,1);  
+        this.carBack = new CarTop(this.scene,1,4,2,1);
+        this.carMiddleFront = new CarTop(this.scene,0.5,4,3,2);
         this.side = new CarSide(this.scene,this.curve,this.back,this.middle,this.front,this.leastHeight,this.height,this.wheelRadius,0);
         this.side2 = new CarSide(this.scene,16,this.back,this.middle,this.front,this.leastHeight,this.height,this.wheelRadius,1);
-
         this.cover = new CarCover(this.scene,this.flatLength,this.height,this.leastHeight,this.back,this.front,this.wheelRadius);
-           
         this.under=new CarUnder(this.scene,this.back,this.middle,this.front,this.wheelRadius,this.curve);
 
 		this.initBuffers();

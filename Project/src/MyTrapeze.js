@@ -13,26 +13,10 @@ class MyTrapeze extends CGFobject
         this.initBuffers();
         this.dif = (this.base-this.top)/2;
 
-       /* this.trapT = new CGFappearance(this.scene);
-        this.trapT.loadTexture("../resources/images/wheel_rim.png");
-		this.trapT.setAmbient(0.5,0.5,0.5,1);
-		this.trapT.setDiffuse(0.2,0.2,0.2,1);
-		this.trapT.setSpecular(0.1,0.1,0.1,1);	
-        this.trapT.setShininess(100);
-        */
+  
     };
     
-   /* 
-   display()
-    {
-        this.scene.pushMatrix();
-            this.trapT.apply();
-            super.display();
-		this.scene.popMatrix();
-        
-    }
-    */
-
+   
 	initBuffers() 
 	{
 		this.normals = [

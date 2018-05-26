@@ -2,6 +2,7 @@
  * MyTriangle
  * @constructor
  */
+//A triangle with a defined 90 degree angle
 class MyTriangle extends CGFobject
 {
 	constructor(scene,direction) 

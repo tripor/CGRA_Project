@@ -2,6 +2,7 @@
  * SemiCylinderPush
  * @constructor
  */
+//Semi Cylinder with the faces inverted for the under cover of the car from one wheel to the other
 class SemiCylinder extends CGFobject
 {
 	constructor(scene,curve,wheelDiam) 

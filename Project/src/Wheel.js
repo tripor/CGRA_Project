@@ -14,8 +14,7 @@ class Wheel extends CGFobject
     {
 		this.scene.translate(0,0,-0.25);
 		this.scene.pushMatrix();
-			//console.log(this.scene.currVehicleAppearance);
-			if(this.type==1){
+		if(this.type==1){
 				this.scene.vehicleAppearances[this.scene.currVehicleAppearance].black.apply();
 			}
 			else {
